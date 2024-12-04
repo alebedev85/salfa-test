@@ -1,10 +1,17 @@
-import { mainApi } from '../../mainApi';
-import { IProduct } from '../../../utils/types';
+import { mainApi } from "../../mainApi";
+import { IProduct } from "../../../utils/types";
+
+interface getAllProductRequest {
+  limit: number;
+  products: IProduct[];
+  skip: number;
+  total: number;
+}
 
 const productsApi = mainApi.injectEndpoints({
   endpoints: (build) => ({
-    getAllProducts: build.query<IProduct, void>({
-      query: () => 'products',
+    getAllProducts: build.query<getAllProductRequest, void>({
+      query: () => "products",
     }),
   }),
   overrideExisting: false,

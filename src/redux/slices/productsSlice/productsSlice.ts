@@ -27,5 +27,5 @@ const productsSlice = createSlice({
 
 export default productsSlice.reducer;
 export const { setProductsList, setProductsSelected } = productsSlice.actions;
-export const ambassadorsListSelector = (state: RootState) =>
+export const productsListSelector = (state: RootState) =>
   state.products.productsList;
