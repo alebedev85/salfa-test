@@ -1,0 +1,23 @@
+.page {
+  padding: 70px 0;
+  background-color: #e5ebf1;
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'YS Display', Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.main {
+  max-width: 1190px;
+  margin: auto;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: start;
+  gap: 50px;
+  flex-wrap: wrap;
+}
