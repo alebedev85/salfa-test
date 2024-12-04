@@ -5,18 +5,12 @@ import ProductCard from "../ProductCard/ProductCard";
 import styles from "./ProductsList.module.scss";
 
 export default function ProductsList() {
-  const products = useAppSelector(productsListSelector)
+  const products = useAppSelector(productsListSelector);
   return (
     <div className={styles.list}>
       {products ? (
-        products.map((elm) => {
-          return (
-            <ProductCard
-              title={elm.title}
-              thumbnail={elm.thumbnail}
-              description={elm.description}
-            />
-          );
+        products.map((product) => {
+          return <ProductCard key={product.id} product={product} />;
         })
       ) : (
         <div>Ничего не найдено</div>

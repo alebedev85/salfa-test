@@ -5,40 +5,45 @@ import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { ProductStateType } from "../../redux/slices/productsSlice/productsSlice";
+import { useAppDispatch } from "../../redux/store";
+import {
+  selecteProduct,
+  deleteProduct,
+} from "../../redux/slices/productsSlice/productsSlice";
 
 interface IProductCardProps {
-  title: string;
-  description: string;
-  thumbnail: string;
+  product: ProductStateType;
 }
 
-export default function ProductCard({
-  title,
-  description,
-  thumbnail,
-}: IProductCardProps) {
+export default function ProductCard({ product }: IProductCardProps) {
+  const dispatch = useAppDispatch();
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="194"
-        image={thumbnail}
-        alt={`${title} picture`}
+        image={product.thumbnail}
+        alt={`${product.title} picture`}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {title}
+          {product.title}
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          {description}
+          {product.description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton
+          aria-label="add to favorites"
+          onClick={() => dispatch(selecteProduct(product.id))}
+        >
+          {product.selected ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton aria-label="delete" onClick={() => dispatch(deleteProduct( product.id ))}>
           <DeleteIcon />
         </IconButton>
       </CardActions>
