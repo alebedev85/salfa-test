@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import productsReducer from "./slices/productsSlice/productsSlice";
+import detailsReducer from "./slices/detailsSlice/detailsSlice"
 import { mainApi } from "./mainApi";
 
 export const store = configureStore({
   reducer: {
     products: productsReducer,
+    details: detailsReducer,
     [mainApi.reducerPath]: mainApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

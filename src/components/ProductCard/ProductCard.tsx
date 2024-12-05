@@ -16,12 +16,13 @@ import {
 
 interface IProductCardProps {
   product: ProductStateType;
+  onClick: () => void;
 }
 
-export default function ProductCard({ product }: IProductCardProps) {
+export default function ProductCard({ product, onClick }: IProductCardProps) {
   const dispatch = useAppDispatch();
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, cursor: 'pointer' }} onClick={onClick}>
       <CardMedia
         component="img"
         height="194"
@@ -39,11 +40,20 @@ export default function ProductCard({ product }: IProductCardProps) {
       <CardActions disableSpacing>
         <IconButton
           aria-label="add to favorites"
-          onClick={() => dispatch(selecteProduct(product.id))}
+          onClick={(e) => {
+            e.stopPropagation();
+            dispatch(selecteProduct(product.id));
+          }}
         >
           {product.selected ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
-        <IconButton aria-label="delete" onClick={() => dispatch(deleteProduct( product.id ))}>
+        <IconButton
+          aria-label="delete"
+          onClick={(e) => {
+            e.stopPropagation();
+            dispatch(deleteProduct(product.id))
+          }}
+        >
           <DeleteIcon />
         </IconButton>
       </CardActions>
