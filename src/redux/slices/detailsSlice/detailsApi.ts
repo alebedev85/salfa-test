@@ -1,16 +1,9 @@
 import { mainApi } from "../../mainApi";
 import { IProduct } from "../../../utils/types";
 
-interface getDetails {
-  limit: number;
-  products: IProduct[];
-  skip: number;
-  total: number;
-}
-
 const detailsApi = mainApi.injectEndpoints({
   endpoints: (build) => ({
-    getDetails: build.query<getDetails, string | undefined>({
+    getDetails: build.query<IProduct, string | undefined>({
       query: (id) => `products/${id}`,
     }),
   }),
