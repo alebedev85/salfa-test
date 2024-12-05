@@ -8,8 +8,8 @@ import {
 } from "../../redux/slices/detailsSlice/detailsSlice";
 import { IconButton } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import Info from "../Info/Info";
-import Preloader from "../Preloader/Preloader";
+import Info from "../../components/Info/Info";
+import Preloader from "../../components/Preloader/Preloader";
 
 import styles from "./Details.module.scss";
 

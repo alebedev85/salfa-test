@@ -1,0 +1,31 @@
+import { Checkbox, InputAdornment, Input } from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { Button } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+
+import styles from "./Controls.module.scss";
+
+export default function Controls() {
+  return (
+    <div className={styles.controls}>
+      <div className={styles.search}>
+        <Input
+          placeholder="Поиск"
+          type="text"
+          startAdornment={
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          }
+        />
+        <Checkbox
+          icon={<FavoriteBorder />}
+          checkedIcon={<Favorite />}
+          size="large"
+        />
+      </div>
+
+      <Button variant="contained">Создать новый товар</Button>
+    </div>
+  );
+}
