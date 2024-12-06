@@ -3,6 +3,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import productsReducer from "./slices/productsSlice/productsSlice";
 import detailsReducer from "./slices/detailsSlice/detailsSlice";
 import filtersReducer from "./slices/filtersSlice/filtersSlice";
+import paginationReducer from "./slices/paginationSlice/paginationSlice";
 import { mainApi } from "./mainApi";
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     products: productsReducer,
     details: detailsReducer,
     filters: filtersReducer,
+    pagination: paginationReducer,
     [mainApi.reducerPath]: mainApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
