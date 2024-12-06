@@ -1,14 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
-import { IProduct } from "../../../utils/types";
+import { IProduct, NewProductType } from "../../../utils/types";
 import { FiltersType } from "../filtersSlice/filtersSlice";
 
-export interface ProductStateType extends IProduct {
-  selected?: boolean;
-}
-
 type InitialState = {
-  productsList: ProductStateType[];
+  productsList: IProduct[];
 };
 
 const initialState: InitialState = {
@@ -35,11 +31,17 @@ const productsSlice = createSlice({
         (product) => product.id !== action.payload
       );
     },
+    addProduct(state, action: PayloadAction<NewProductType>) {
+      state.productsList.unshift({
+        id: new Date().getTime(),
+        ...action.payload,
+      });
+    },
   },
 });
 
 export default productsSlice.reducer;
-export const { setProductsList, selecteProduct, deleteProduct } =
+export const { setProductsList, selecteProduct, deleteProduct, addProduct } =
   productsSlice.actions;
 export const productsListSelector = (state: RootState) =>
   state.products.productsList;

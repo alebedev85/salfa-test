@@ -31,7 +31,7 @@ export default function Info() {
               <b>Цена:</b> {details.price}
             </li>
             <li className={styles.listItem}>
-              <b>Цена со скидкой:</b>{" "}
+              <b>Цена со скидкой:</b>
               {details.price - details.price * details.discountPercentage/100}
             </li>
             <li className={styles.listItem}>

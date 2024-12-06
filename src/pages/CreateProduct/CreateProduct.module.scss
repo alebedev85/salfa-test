@@ -1,0 +1,19 @@
+.field {
+  padding-bottom: 15px;
+  line-height: 1.8;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  & > p {
+    font-weight: 400;
+  }
+}
+
+.error {
+  color: #ff0200;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+}

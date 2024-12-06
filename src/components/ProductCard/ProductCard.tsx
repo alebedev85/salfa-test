@@ -7,22 +7,24 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { ProductStateType } from "../../redux/slices/productsSlice/productsSlice";
+import { IProduct } from "../../utils/types";
 import { useAppDispatch } from "../../redux/store";
 import {
   selecteProduct,
   deleteProduct,
 } from "../../redux/slices/productsSlice/productsSlice";
 
+import styles from "./ProductCard.module.scss";
+
 interface IProductCardProps {
-  product: ProductStateType;
+  product: IProduct;
   onClick: () => void;
 }
 
 export default function ProductCard({ product, onClick }: IProductCardProps) {
   const dispatch = useAppDispatch();
   return (
-    <Card sx={{ maxWidth: 345, cursor: 'pointer' }} onClick={onClick}>
+    <Card className={styles.card} onClick={onClick}>
       <CardMedia
         component="img"
         height="194"
