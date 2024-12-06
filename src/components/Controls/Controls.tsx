@@ -18,6 +18,7 @@ export default function Controls() {
     <div className={styles.controls}>
       <div className={styles.search}>
         <Input
+          className={styles.input}
           onChange={(e) => dispatch(setSearch(e.target.value))}
           placeholder="Поиск"
           type="text"
@@ -35,7 +36,7 @@ export default function Controls() {
         />
       </div>
 
-      <Button variant="contained" onClick={() => navigate('/create-product')}>
+      <Button variant="contained" onClick={() => navigate("/create-product")}>
         Создать новый товар
       </Button>
     </div>

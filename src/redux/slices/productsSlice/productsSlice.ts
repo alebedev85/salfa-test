@@ -49,4 +49,10 @@ export const filteredProductsSeclector = (
   state: RootState,
   filter: FiltersType
 ) =>
-  state.products.productsList.filter((p) => (filter.selected ? p.selected : p));
+  state.products.productsList
+    .filter(
+      (p) =>
+        p.title.toLowerCase().includes(filter.search.toLowerCase()) &&
+        p.description.toLowerCase().includes(filter.search.toLowerCase())
+    )
+    .filter((p) => (filter.selected ? p.selected : p));

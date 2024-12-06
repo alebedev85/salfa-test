@@ -1,6 +1,7 @@
 .controls {
   width: 100%;
   padding-bottom: 30px;
+  
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -8,7 +9,13 @@
 }
 
 .search{
+  // padding-right: 30px;
   display: flex;
   gap: 30px;
-  align-items: center
+  align-items: center;
+  width: 81%;
+}
+
+.input{
+  width: 100%;
 }
