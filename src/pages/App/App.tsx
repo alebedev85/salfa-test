@@ -1,8 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { useGetAllProductsQuery } from "../../redux/slices/productsSlice/productsApi";
-import { setProductsList } from "../../redux/slices/productsSlice/productsSlice";
+import {
+  useGetAllProductsQuery,
+  useGetCategorysQuery,
+} from "../../redux/slices/productsSlice/productsApi";
+import {
+  setProductsList,
+  setCategores,
+} from "../../redux/slices/productsSlice/productsSlice";
 import Main from "../Main/Main";
 import Details from "../Details/Details";
 import CreateProduct from "../CreateProduct/CreateProduct";
@@ -18,6 +24,11 @@ function App() {
   const dispatch = useAppDispatch();
   const { page } = useAppSelector(paginationSelector);
   const { data, isLoading, isSuccess } = useGetAllProductsQuery(page);
+  const {
+    data: categores,
+    isLoading: categoresLoading,
+    isSuccess: categoresSucces,
+  } = useGetCategorysQuery(page);
 
   useEffect(() => {
     if (isSuccess) {
@@ -26,6 +37,13 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, data]);
+
+  useEffect(() => {
+    if (categoresSucces) {
+      dispatch(setCategores(categores));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categoresLoading, categores]);
 
   return (
     <div className={styles.page}>

@@ -5,10 +5,12 @@ import { FiltersType } from "../filtersSlice/filtersSlice";
 
 type InitialState = {
   productsList: IProduct[];
+  categores: string[];
 };
 
 const initialState: InitialState = {
   productsList: [],
+  categores: [],
 };
 
 const productsSlice = createSlice({
@@ -17,6 +19,9 @@ const productsSlice = createSlice({
   reducers: {
     setProductsList: (state, action: PayloadAction<IProduct[]>) => {
       state.productsList = action.payload;
+    },
+    setCategores: (state, action: PayloadAction<string[]>) => {
+      state.categores = action.payload;
     },
     selecteProduct: (state, action: PayloadAction<number>) => {
       const selectedProduct = state.productsList.find(
@@ -41,10 +46,16 @@ const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
-export const { setProductsList, selecteProduct, deleteProduct, addProduct } =
-  productsSlice.actions;
+export const {
+  setProductsList,
+  selecteProduct,
+  deleteProduct,
+  addProduct,
+  setCategores,
+} = productsSlice.actions;
 export const productsListSelector = (state: RootState) =>
   state.products.productsList;
+export const categoresSelector = (state: RootState) => state.products.categores;
 export const filteredProductsSeclector = (
   state: RootState,
   filter: FiltersType
@@ -55,4 +66,5 @@ export const filteredProductsSeclector = (
         p.title.toLowerCase().includes(filter.search.toLowerCase()) &&
         p.description.toLowerCase().includes(filter.search.toLowerCase())
     )
+    .filter((p) => (filter.categore ? p.category === filter.categore : p))
     .filter((p) => (filter.selected ? p.selected : p));
