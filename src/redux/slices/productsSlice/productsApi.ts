@@ -1,6 +1,5 @@
 import { mainApi } from "../../mainApi";
 import { IProduct } from "../../../utils/types";
-import { PER_PAGE } from "../../../utils/const";
 
 interface getAllProductRequest {
   limit: number;

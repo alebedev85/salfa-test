@@ -28,6 +28,8 @@ export default function ProductsList() {
   useEffect(() => {
     if (products.length) {
       dispatch(setPages(Math.ceil(products.length / PER_PAGE)));
+    } else {
+      dispatch(setPages(1));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, products.length]);
