@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { useAppDispatch } from "../../redux/store";
 import {
   useGetAllProductsQuery,
   useGetCategorysQuery,
@@ -12,28 +12,22 @@ import {
 import Main from "../Main/Main";
 import Details from "../Details/Details";
 import CreateProduct from "../CreateProduct/CreateProduct";
-import {
-  paginationSelector,
-  setPages,
-} from "../../redux/slices/paginationSlice/paginationSlice";
-import { PER_PAGE } from "../../utils/const";
 
 import styles from "./App.module.scss";
 
 function App() {
   const dispatch = useAppDispatch();
-  const { page } = useAppSelector(paginationSelector);
-  const { data, isLoading, isSuccess } = useGetAllProductsQuery(page);
+  const { data, isLoading, isSuccess } = useGetAllProductsQuery();
   const {
     data: categores,
     isLoading: categoresLoading,
     isSuccess: categoresSucces,
-  } = useGetCategorysQuery(page);
+  } = useGetCategorysQuery();
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(setProductsList(data.products));
-      dispatch(setPages(Math.ceil(data.total / PER_PAGE)));
+      // dispatch(setPages(Math.ceil(data.total / PER_PAGE)));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading, data]);

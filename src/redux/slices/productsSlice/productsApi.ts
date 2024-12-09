@@ -11,12 +11,13 @@ interface getAllProductRequest {
 
 const productsApi = mainApi.injectEndpoints({
   endpoints: (build) => ({
-    getAllProducts: build.query<getAllProductRequest, number>({
-      query: (page) =>
-        `products?limit=${PER_PAGE}&skip=${(page - 1) * PER_PAGE}`,
+    getAllProducts: build.query<getAllProductRequest, void>({
+      query: () =>
+        `products?limit=0`,
     }),
-    getCategorys: build.query<string[], number>({
-      query: () => "products/category-list",
+    getCategorys: build.query<string[], void>({
+      query: () =>
+        'products/category-list',
     }),
   }),
   overrideExisting: false,
