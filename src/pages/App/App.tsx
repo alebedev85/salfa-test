@@ -6,11 +6,13 @@ import { setProductsList } from "../../redux/slices/productsSlice/productsSlice"
 import Main from "../Main/Main";
 import Details from "../Details/Details";
 import CreateProduct from "../CreateProduct/CreateProduct";
-import { paginationSelector, setPages } from "../../redux/slices/paginationSlice/paginationSlice";
-import { PER_PAGE } from '../../utils/const';
+import {
+  paginationSelector,
+  setPages,
+} from "../../redux/slices/paginationSlice/paginationSlice";
+import { PER_PAGE } from "../../utils/const";
 
 import styles from "./App.module.scss";
-
 
 function App() {
   const dispatch = useAppDispatch();
@@ -23,12 +25,13 @@ function App() {
       dispatch(setPages(Math.ceil(data.total / PER_PAGE)));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading, page]);
+  }, [isLoading, data]);
+
   return (
     <div className={styles.page}>
       <main className={styles.content}>
         <Routes>
-          <Route path="/" element={<Main isLoading={isLoading}/>} />
+          <Route path="/" element={<Main isLoading={isLoading} />} />
           <Route path="/products/:id" element={<Details />} />
           <Route path="/create-product" element={<CreateProduct />} />
         </Routes>

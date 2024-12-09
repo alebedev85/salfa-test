@@ -13,7 +13,7 @@ const productsApi = mainApi.injectEndpoints({
   endpoints: (build) => ({
     getAllProducts: build.query<getAllProductRequest, number>({
       query: (page) =>
-        `products?limit=${PER_PAGE}&skip=${(page - 1) * PER_PAGE}`,
+        `products?limit=${PER_PAGE}&skip=${(page-1) * PER_PAGE}`,
     }),
   }),
   overrideExisting: false,
