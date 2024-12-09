@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/salfa-test/static/css/main.1febd4e2.css",
-    "main.js": "/salfa-test/static/js/main.01761f09.js",
+    "main.css": "/salfa-test/static/css/main.1179c850.css",
+    "main.js": "/salfa-test/static/js/main.9e9656da.js",
     "index.html": "/salfa-test/index.html",
-    "main.1febd4e2.css.map": "/salfa-test/static/css/main.1febd4e2.css.map",
-    "main.01761f09.js.map": "/salfa-test/static/js/main.01761f09.js.map"
+    "main.1179c850.css.map": "/salfa-test/static/css/main.1179c850.css.map",
+    "main.9e9656da.js.map": "/salfa-test/static/js/main.9e9656da.js.map"
   },
   "entrypoints": [
-    "static/css/main.1febd4e2.css",
-    "static/js/main.01761f09.js"
+    "static/css/main.1179c850.css",
+    "static/js/main.9e9656da.js"
   ]
 }
